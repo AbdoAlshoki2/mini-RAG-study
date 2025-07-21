@@ -21,3 +21,19 @@ conda activate rag
 ```bash
 export PS1="\[\033[01;32m\]\u@\h:\w\n\[\033[00m\]\$ "
 ```
+
+## Installation
+
+### Install the required packages
+
+```bash
+$ pip install -r requirements.txt
+```
+
+### Setup the environment variables
+
+```bash
+$ cp .env.example .env
+```
+
+This project uses a `.env` file to store the environment variables. You can copy the `.env.example` file to `.env` and set your environment variables.
