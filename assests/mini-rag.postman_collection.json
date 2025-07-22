@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "4c0bb9f7-62d8-4b4d-ab10-d2e8b772c277",
+		"name": "mini-rag",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46968367",
+		"_collection_link": "https://satellite-saganist-46208432-5411759.postman.co/workspace/Abdelrahman-Alshoki's-Workspace~ce902b76-3035-410c-871f-b7f827052b72/collection/46968367-4c0bb9f7-62d8-4b4d-ab10-d2e8b772c277?action=share&source=collection_link&creator=46968367"
+	},
+	"item": [
+		{
+			"name": "welcome-request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
