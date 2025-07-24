@@ -7,3 +7,5 @@ class ResponseSignal(Enum):
     FILE_SIZE_EXCEEDED = "File size too large"
     FILE_UPLOADED_SUCCESS = "File is uploaded successfully"
     FILE_UPLOADED_FAILED = "File upload failed"
+    FILE_PROCESSING_FAILED = "File processing failed"
+    FILE_PROCESSED_SUCCESS = "File processed successfully"
