@@ -7,8 +7,9 @@ from .schemes import ProcessRequest
 import os
 import aiofiles
 import logging
-from models import ProjectModel, ChunkModel
-from models.db_schemes import DataChunk
+from models import ProjectModel, ChunkModel, AssetModel, AssetTypeEnum
+from models.db_schemes import DataChunk, Asset
+from bson import ObjectId
 
 
 logger = logging.getLogger('uvicorn.error')
@@ -63,10 +64,22 @@ async def upload_data(request: Request, project_id: str,
                 }
         )
 
+    asset_model = await AssetModel.create_instance(
+        db_client=request.app.db_client
+    )
+
+    asset_resources = Asset(
+        asset_project_id= project.id,
+        asset_name= file_name,
+        asset_type= AssetTypeEnum.FILE.value,
+        asset_size= os.path.getsize(file_path)
+    )
+    asset_record = await asset_model.create_asset(asset=asset_resources)
+    
     return JSONResponse(
         content={
             "signal": ResponseSignal.FILE_UPLOADED_SUCCESS.value,
-            "file name": file_name
+            "file name": str(asset_record.id)
             }
     )
     
