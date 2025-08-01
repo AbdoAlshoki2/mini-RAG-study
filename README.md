@@ -38,6 +38,23 @@ $ cp .env .env.example
 
 This project uses a `.env` file to store the environment variables. You can copy the `.env.example` file to `.env` and set your environment variables.
 
+## Run Docker Compose Services
+
+```bash
+$ cd docker
+$ cp .env.example .env
+```
+
+- update `.env` with your credentials
+
+
+
+```bash
+$ cd docker
+$ sudo docker compose up -d
+```
+
+
 ## Run the FastAPI server
 
 ```bash
