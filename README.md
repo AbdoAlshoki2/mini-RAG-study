@@ -33,7 +33,7 @@ $ pip install -r requirements.txt
 ### Setup the environment variables
 
 ```bash
-$ cp .env.example .env
+$ cp .env .env.example
 ```
 
 This project uses a `.env` file to store the environment variables. You can copy the `.env.example` file to `.env` and set your environment variables.
