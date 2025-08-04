@@ -111,6 +111,7 @@ src/
 │   └── data.py
 ├── stores/            # External service integrations
 │   └── llm/           # LLM provider implementations
+│   └── vectordb/      # Vector database provider implementations
 └── helpers/           # Utility functions
 ```
 
@@ -124,4 +125,8 @@ src/
 | `FILE_MAX_SIZE` | Maximum file size in MB | `10` |
 | `OPENAI_API_KEY` | OpenAI API key | - |
 | `COHERE_API_KEY` | Cohere API key | - |
+| `VECTOR_DB_PATH` | Vector database path | `vector_db` |
+| `VECTOR_DB_DISTANCE_METHOD` | Vector database distance method | `cosine` |
+| `VECTOR_DB_PROVIDER` | Vector database provider | `qdrant` |
+
 
