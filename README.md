@@ -72,7 +72,8 @@ An educational project implementing a basic RAG (Retrieval-Augmented Generation)
 
 2. Run the FastAPI server:
    ```bash
-   uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
+   cd src
+   uvicorn main:app --reload --host 0.0.0.0 --port 5000
    ```
 
 3. Access the API documentation:

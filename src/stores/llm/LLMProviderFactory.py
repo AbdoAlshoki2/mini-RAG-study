@@ -1,4 +1,4 @@
-from .LLMEnum import LLMProviderEnum
+from .LLMEnum import LLMEnum
 from .providers import OpenAIProvider
 from .providers import CoHereProvider
 
@@ -9,7 +9,7 @@ class LLMProviderFactory:
     
     def create(self, provide: str):
 
-        if provide == LLMProviderEnum.OPENAI.value:
+        if provide == LLMEnum.OPENAI.value:
             return OpenAIProvider(
                 api_key= self.config.OPENAI_API_KEY,
                 api_url= self.config.OPENAI_API_URL,
@@ -18,10 +18,9 @@ class LLMProviderFactory:
                 default_generation_temperature= self.config.GENERATION_DAFAULT_TEMPERATURE
             )
         
-        if provide == LLMProviderEnum.COHERE.value:
+        if provide == LLMEnum.COHERE.value:
             return CoHereProvider(
                 api_key= self.config.COHERE_API_KEY,
-                api_url= self.config.COHERE_API_URL,
                 default_input_max_input_characters= self.config.INPUT_DAFAULT_MAX_CHARACTERS,
                 default_generation_output_max_output_tokens= self.config.GENERATION_DAFAULT_MAX_TOKENS,
                 default_generation_temperature= self.config.GENERATION_DAFAULT_TEMPERATURE

@@ -20,7 +20,7 @@ class CoHereProvider(LLMInterface):
         self.embedding_model_id = None
         self.embedding_size = None
 
-        self.client = cohere.ClientV2(
+        self.client = cohere.Client(
             api_key= self.api_key,
         )
 
@@ -95,10 +95,10 @@ class CoHereProvider(LLMInterface):
             model= self.embedding_model_id,
             input_type= input_type,
             texts= [self.process_text(text)],
-            embedding_type= ['float']
+            embedding_types = ['float']
         )
 
-        if not response or not response.embeddings or response.embeddings.float or not len(response.embeddings.float)==0:
+        if not response or not response.embeddings:
             self.logger.error("Error while embedding text with Cohere")
             return None
         
