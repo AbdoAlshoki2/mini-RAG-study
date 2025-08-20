@@ -58,7 +58,6 @@ class CoHereProvider(LLMInterface):
         temperature = temperature if temperature else self.default_generation_temperature
 
         prompt = self.construct_prompt(prompt, CoHereEnum.USER.value)
-        chat_history.append(prompt)
 
         response = self.client.chat(
             model= self.generation_model_id,
