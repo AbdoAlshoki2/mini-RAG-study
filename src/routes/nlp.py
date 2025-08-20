@@ -142,7 +142,7 @@ async def search_index(request: Request, project_id: str, search_request: Search
     return JSONResponse(
         content={
             "signal": ResponseSignal.SEARCH_INDEX_SUCCESS.value,
-            "results": results
+            "results": [result.dict() for result in results]
         }
     )
     
