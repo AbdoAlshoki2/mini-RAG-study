@@ -25,6 +25,7 @@ class OpenAIProvider(LLMInterface):
             base_url = self.api_url if self.api_url and len(self.api_url) else None
         )
 
+        self.enums = OpenAIEnum
         self.logger = logging.getLogger(__name__)
 
 
@@ -40,7 +41,7 @@ class OpenAIProvider(LLMInterface):
         return text[:self.default_input_max_input_characters].strip()
 
 
-    def generate_text(self, prompt: str, chat_histor: list = [], max_output_tokens: int = None,
+    def generate_text(self, prompt: str, chat_history: list = [], max_output_tokens: int = None,
                         temperature: float = None):
         
         if not self.client:

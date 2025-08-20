@@ -16,9 +16,9 @@ class OpenAIEnum(Enum):
 
 class CoHereEnum(Enum):
     
-    SYSTEM= "system"
-    USER= "user"
-    ASSISTANT= "assistant"
+    SYSTEM= "SYSTEM"
+    USER= "USER"
+    ASSISTANT= "CHATBOT"
 
     DOCUMENT = "search_document"
     QUERY = "search_query"

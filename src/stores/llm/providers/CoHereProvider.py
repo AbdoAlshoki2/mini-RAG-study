@@ -1,3 +1,4 @@
+from email import message
 from ..LLMInterface import LLMInterface
 from ..LLMEnum import CoHereEnum, DocumentTypeEnum
 import cohere 
@@ -24,6 +25,8 @@ class CoHereProvider(LLMInterface):
             api_key= self.api_key,
         )
 
+        self.enums = CoHereEnum
+
         self.logger = logging.getLogger(__name__)
 
 
@@ -39,7 +42,7 @@ class CoHereProvider(LLMInterface):
         return text[:self.default_input_max_input_characters].strip()
 
 
-    def generate_text(self, prompt: str, chat_histor: list = [], max_output_tokens: int = None,
+    def generate_text(self, prompt: str, chat_history: list = [], max_output_tokens: int = None,
                         temperature: float = None):
         
         if not self.client:
@@ -54,22 +57,23 @@ class CoHereProvider(LLMInterface):
         max_output_tokens = max_output_tokens if max_output_tokens else self.default_generation_output_max_output_tokens
         temperature = temperature if temperature else self.default_generation_temperature
 
-        chat_history.append(
-            self.construct_prompt(prompt, CoHereEnum.USER.value)
-        )
+        prompt = self.construct_prompt(prompt, CoHereEnum.USER.value)
+        chat_history.append(prompt)
 
         response = self.client.chat(
             model= self.generation_model_id,
-            messages= chat_history,
+            chat_history= chat_history,
+            message= prompt['text'],
             max_tokens= max_output_tokens,
             temperature= temperature
         )
 
-        if not response or not response.message or not response.message.content:
+        if not response or not response.text:
             self.logger.error("Error while generating text with Cohere")
             return None
 
-        return response.message.content
+
+        return response.text
 
 
 
@@ -108,6 +112,6 @@ class CoHereProvider(LLMInterface):
     def construct_prompt(self, prompt:str , role:str):
         return {
             "role": role,
-            "content": self.process_text(prompt)
+            "text": self.process_text(prompt)
         }
 
