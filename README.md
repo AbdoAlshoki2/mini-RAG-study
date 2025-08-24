@@ -119,14 +119,14 @@ src/
 - **POST** `/api/v1/data/upload/{project_id}`
   - Upload a text or PDF document for processing
   - **Parameters**:
-    - `project_id` (path): Project identifier
+    - `project_id`: Project identifier
     - `file` (form-data): The file to upload
   - **Returns**: File ID for reference
 
 - **POST** `/api/v1/data/process/{project_id}`
   - Process uploaded documents into chunks
   - **Parameters**:
-    - `project_id` (path): Project identifier
+    - `project_id`: Project identifier
     - `chunk_size` (query): Size of each text chunk (default: 100)
     - `overlap_size` (query): Overlap between chunks (default: 20)
     - `do_reset` (query): Whether to reset existing chunks (default: false)
@@ -137,25 +137,25 @@ src/
 - **POST** `/api/v1/nlp/index/push/{project_id}`
   - Index project documents into the vector database
   - **Parameters**:
-    - `project_id` (path): Project identifier
+    - `project_id`: Project identifier
     - `do_reset` (body): Whether to reset existing index (default: false)
 
 - **GET** `/api/v1/nlp/index/info/{project_id}`
   - Get information about the project's vector index
   - **Parameters**:
-    - `project_id` (path): Project identifier
+    - `project_id`: Project identifier
 
 - **POST** `/api/v1/nlp/search/{project_id}`
   - Search the vector database for relevant chunks
   - **Parameters**:
-    - `project_id` (path): Project identifier
+    - `project_id`: Project identifier
     - `query` (body): Search query
     - `top_k` (body, optional): Number of results to return (default: 5)
 
 - **POST** `/api/v1/nlp/answer/{project_id}`
   - Get an answer from the RAG system
   - **Parameters**:
-    - `project_id` (path): Project identifier
+    - `project_id`: Project identifier
     - `query` (body): Question to answer
     - `top_k` (body, optional): Number of context chunks to use (default: 5)
 
